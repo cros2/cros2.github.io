@@ -1,13 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>其他</title>
+    <link rel="stylesheet" href="../../main.css">
 </head>
 
 <body>
+    <header>
+        <nav>
+            <ul style="text-align: center; letter-spacing: 2px;">
+                <li><a href="../../index.html">首页</a></li>
+                <li class="is_login"><a href='../login/login.html'>登录</a></li>
+                <li><a href="others.html">其他</a></li>
+            </ul>
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+                    var username = localStorage.getItem("username");
+                    if (username) {
+                        // href='./post/mine/mine.html' 跳转到mine页面
+                        document.querySelector(".is_login").innerHTML = "<a href='../login/login.html'>已登录</a>";
+                    }
+                });
+            </script>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <div style="display:flex;justify-content:center;">
+        <img src="../../picture/favicon.ico" alt="图片" style="width: 200px;height: 200px;">
+    </div>
+    <h1 style="text-align: center;">下面是我的其他个人网站，欢迎访问！</h1>
+    <div style="text-align: center;">
+        <div class="post-content" v-pre>
+            <ul>
+                <p style="font-weight: bolder;color: red;">主要网站</p>
+                <a href="https://github.com/CrosWuft">我的Github主页</a><br>
+                <a href="https://blog.csdn.net/qq_60648336">我的csdn主页</a><br>
+                <a href="https://space.bilibili.com/1374481396">我的b站主页</a><br>
+                <a href="https://croswuft.github.io">主站</a><br>
+                <a href="https://wuzhujie.github.io/">备用网站</a><br>
+                <a href="https://cros2.github.io">本站</a><br>
+                <br>
+                <p style="font-weight: bolder;color: red;">友情链接：</p>
+                <a href="https://github.com/cold-su">友情链接1(Resu)</a><br>
+                <a href="https://nnzyo.github.io/">友情链接2(Xna)</a>
+                <style>
+                    a {
+                        color: rgb(0, 0, 0);
+                        text-decoration: none;
+                    }
+                </style>
+            </ul>
+
+        </div>
+        <div class="toc-container">
+
+        </div>
+    </div>
+
 
 </body>
 

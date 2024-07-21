@@ -1,0 +1,174 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> 下面是我的其他个人网站，欢迎访问！ | CrosWuft</title>
+    <link rel="shortcut icon" href="https://croswuft.github.io/favicon.ico?v=1706801474406">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://croswuft.github.io/styles/main.css">
+    <link rel="alternate" type="application/atom+xml" title=" 下面是我的其他个人网站，欢迎访问！ | CrosWuft - Atom Feed"
+        href="https://croswuft.github.io/atom.xml">
+
+
+
+    <meta name="description" content="我的Github主页
+我的csdn主页
+我的b站主页
+本站
+备用网站
+友情链接：
+友情链接1(Resu)
+友情链接2(Xna)
+..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul style="text-align: center; letter-spacing: 2px;">
+                <li><a href="index.html">首页</a></li>
+                <li class="is_login"><a href='post/login/login.html'>登录</a></li>
+                <li><a href="post/others/others.html">其他</a></li>
+            </ul>
+
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+                    var username = localStorage.getItem("username");
+                    if (username) {
+                        document.querySelector(".is_login").innerHTML = "<a href='post/login/login.html'>已登录</a>";
+                    }
+                });
+            </script>
+        </nav>
+    </header>
+    <div class="main">
+        <div class="main-content">
+            <div class="site-header">
+                <a href="https://croswuft.github.io">
+                    <img class="avatar"
+                        src="https://cdn.jsdelivr.net/gh/CrosWuft/CrosWuft.github.io@main/assets/avatar.png?v=1706801474406"
+                        alt="">
+                </a>
+                <h1 class="site-title">
+                    CrosWuft
+                </h1>
+                <div class="menu-container">
+
+
+                </div>
+                <div class="social-container">
+
+
+                    <a href="https://github.com/CrosWuft" target="_blank">
+                        <i class="ri-github-line"></i>
+                    </a>
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        下面是我的其他个人网站，欢迎访问！
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2022-08-29
+                        </span>
+                        <span>
+                            1 min read
+                        </span>
+
+                    </div>
+
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <p><a href="https://github.com/CrosWuft">我的Github主页</a><br>
+                                <a href="https://blog.csdn.net/qq_60648336">我的csdn主页</a><br>
+                                <a href="https://space.bilibili.com/1374481396">我的b站主页</a><br>
+                                <a href="">主站</a><br>
+                                <a href="https://wuzhujie.github.io/">备用网站</a><br>
+                                <a href="https://cros2.github.io">本站</a>
+                                友情链接：<br>
+                                <a href="https://pcg0.github.io">友情链接1(Resu)</a><br>
+                                <a href="https://nnzyo.github.io/">友情链接2(Xna)</a>
+                            </p>
+
+                        </div>
+                        <div class="toc-container">
+
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+
+
+
+
+            <div class="site-footer">
+                Powered by <a href="https://github.com/CrosWuft">CrosWuft</a>
+                <a class="rss" href="https://croswuft.github.io/atom.xml" target="_blank">
+                    <i class="ri-rss-line"></i> RSS
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        // This should probably be throttled.
+        // Especially because it triggers during smooth scrolling.
+        // https://lodash.com/docs/4.17.10#throttle
+        // You could do like...
+        // window.addEventListener("scroll", () => {
+        //    _.throttle(doThatStuff, 100);
+        // });
+        // Only not doing it here to keep this Pen dependency-free.
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

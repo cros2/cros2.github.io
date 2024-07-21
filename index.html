@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 
 <head>
     <meta charset="UTF-8">
@@ -17,9 +17,19 @@
         <nav>
             <ul style="text-align: center; letter-spacing: 2px;">
                 <li><a href="index.html">首页</a></li>
-                <li><a href='post/login/login.html'>登录</a></li>
+                <li class="is_login"><a href='post/login/login.html'>登录</a></li>
                 <li><a href="post/others/others.html">其他</a></li>
             </ul>
+
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+                    var username = localStorage.getItem("username");
+                    if (username) {
+                        // href='./post/mine/mine.html' 跳转到mine页面
+                        document.querySelector(".is_login").innerHTML = "<a href='./post/login/login.html'>已登录</a>";
+                    }
+                });
+            </script>
         </nav>
     </header>
 </body>
