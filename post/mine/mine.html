@@ -4,11 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>我的</title>
+    <link rel="shortcut icon" href=".././../picture/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../main.css">
 </head>
 
 <body>
-    <p></p>
+    <header>
+        <nav>
+            <ul style="text-align: center; letter-spacing: 2px;">
+                <li><a href="../../index.html">首页</a></li>
+                <li class="is_login"><a href='post/login/login.html'>登录</a></li>
+                <li><a href="../others/others.html">其他</a></li>
+                <li class="is_my"></li>
+            </ul>
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+                    var username = localStorage.getItem("username");
+                    if (username) {
+                        document.querySelector(".is_login").innerHTML = "<a href='../login/login.html'>已登录</a>";
+                        document.querySelector(".is_my").innerHTML = "<a href='../mine/mine.html'>我的</a>";
+                    }
+                });
+            </script>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <h1 class="user_id"></h1>
+    <p class="level"></p>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var username = localStorage.getItem("username");
+            var level = localStorage.getItem("level");
+            if (username) {
+                document.querySelector(".user_id").innerHTML = `Hi, <a style='color:red; font-weight: bold;'> ${username} </a>!`;
+
+            }
+            if (level) {
+                var level = String(level);
+                document.querySelector(".level").innerHTML = `你的等级为 <a style='color:red; font-weight: bold;'> ${level} </a>`
+            }
+        });
+    </script>
 </body>
 
 </html>
