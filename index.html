@@ -29,7 +29,11 @@
                         // href='./post/mine/mine.html' 跳转到mine页面
                         document.querySelector(".is_login").innerHTML = "<a href='./post/login/login.html'>已登录</a>";
                     }
+                    else if (username) {
+                        document.querySelector(".is_login").innerHTML = "<a href = './post/mine/mine.html''>我的</a>";
+                    }
                 });
+
             </script>
         </nav>
     </header>
