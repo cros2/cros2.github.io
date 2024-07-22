@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>签到系统</title>
+    <style>
+        .signed {
+            color: green;
+        }
+    </style>
+    <link rel="stylesheet" href="../../main.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul style="text-align: center; letter-spacing: 2px;">
+                <li><a href="../../index.html">首页</a></li>
+                <li class="is_login"><a href='post/login/login.html'>登录</a></li>
+                <li><a href="../others/others.html">其他</a></li>
+                <li class="is_my"></li>
+            </ul>
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+                    var username = localStorage.getItem("username");
+                    if (username) {
+                        document.querySelector(".is_login").innerHTML = "<a href='../login/login.html'>已登录</a>";
+                        document.querySelector(".is_my").innerHTML = "<a href='../mine/mine.html'>我的</a>";
+                    }
+                });
+            </script>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <h1 class="k">欢迎来到签到系统</h1>
+    <p id="sign-message" class="sign-message">今日还未签到</p>
+    <button onclick="signIn()" id="sign-btn" class="sign-btn">签到</button>
+    <p>你的硬币余额：<span id="coin_displayer">0</span>coin</p>
+    <script>
+        // var coin = document.getElementById('coin');
+        var coin = 0;
+        const today = new Date().toISOString().split('T')[0];
+        const lastSignDate = localStorage.getItem('lastSignDate');
+
+        function signIn() {
+            // if (lastSignDate === today) {
+            //     alert('今日已签到');
+            //     return;
+            // }
+            // coin += 1;
+            // document.getElementById('coin_displayer').textContent = coin;
+            // document.getElementById('sign-message').textContent = '今日已签到';
+            // document.getElementById('sign-message').classList.add('signed');
+            // localStorage.setItem('lastSignDate', today);
+
+            if (lastSignDate !== today) {
+                coin += 1;
+                document.getElementById('coin_displayer').textContent = coin;
+                document.getElementById('sign-message').textContent = '今日已签到';
+                document.getElementById('sign-message').classList.add('signed');
+                localStorage.setItem('lastSignDate', today);
+            }
+
+            return alert('今日已签到');
+            // return;
+        }
+
+        // if (lastSignDate === today) {
+        //     document.getElementById('sign-message').textContent = '今日已签到';
+        //     document.getElementById('sign-message').classList.add('signed');
+        // } else {
+        //     document.getElementById('sign-btn').onclick = signIn;
+        // }
+    </script>
+</body>
+
+</html>

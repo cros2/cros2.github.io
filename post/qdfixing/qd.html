@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>签到系统</title>
+    <script>
+        // 全局变量
+        let coins = parseInt(localStorage.getItem('coins'));
+        let isSignedToday = false;
+        document.querySelector(".coins").innerHTML = `${coins}`;
+
+        // 签到函数
+        function signIn() {
+            const now = new Date();
+            const today = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+
+            if (!localStorage.getItem(`signed_${today}`) && !isSignedToday) {
+                coins++;
+                isSignedToday = true;
+                localStorage.setItem('coins', coins);
+                localStorage.setItem(`signed_${today}`, 'true');
+                alert(`签到成功！您现在有 ${coins} coin。`);
+            } else {
+                alert('您今天已经签到过了！');
+            }
+
+            document.getElementById('coins').innerText = coins;
+        }
+
+        // 页面加载时检查用户是否已登录
+        document.addEventListener("DOMContentLoaded", function () {
+            const username = localStorage.getItem("username");
+            if (username) {
+                document.querySelector(".is_login").innerHTML = "<a href='../login/login.html'>已登录</a>";
+                document.querySelector(".is_my").innerHTML = "<a href='../mine/mine.html'>我的</a>";
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="../../main.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul style="text-align: center; letter-spacing: 2px;">
+                <li><a href="../../index.html">首页</a></li>
+                <li class="is_login"><a href='../login/login.html'>登录</a></li>
+                <li><a href="others.html">其他</a></li>
+                <li class="is_my"></li>
+            </ul>
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+                    var username = localStorage.getItem("username");
+                    if (username) {
+                        document.querySelector(".is_login").innerHTML = "<a href='../login/login.html'>已登录</a>";
+                        document.querySelector(".is_my").innerHTML = "<a href='../mine/mine.html'>我的</a>";
+                    }
+                });
+            </script>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <h1 class="k">签到系统</h1>
+    <p class="sign-message">您的Coin数量: <span id="coins"></span></p>
+    <button onclick="signIn()">签到</button>
+</body>
+
+</html>

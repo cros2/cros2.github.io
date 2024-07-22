@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>签到系统</title>
+    <style>
+        .signed {
+            color: green;
+        }
+    </style>
+    <link rel="stylesheet" href="../../main.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul style="text-align: center; letter-spacing: 2px;">
+                <li><a href="../../index.html">首页</a></li>
+                <li class="is_login"><a href='post/login/login.html'>登录</a></li>
+                <li><a href="../others/others.html">其他</a></li>
+                <li class="is_my"></li>
+            </ul>
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+                    var username = localStorage.getItem("username");
+                    if (username) {
+                        document.querySelector(".is_login").innerHTML = "<a href='../login/login.html'>已登录</a>";
+                        document.querySelector(".is_my").innerHTML = "<a href='../mine/mine.html'>我的</a>";
+                    }
+                });
+            </script>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <h1 class="k">欢迎来到签到系统</h1>
+    <!-- <p id="sign-message" class="sign-message">今日还未签到</p> -->
+    <button onclick="signIn()" id="sign-btn" class="sign-btn">签到</button>
+    <script>
+        let isSignedToday = false;
+        function signIn() {
+            const now = new Date();
+            const today = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+
+            // 这里使用localStorage来模拟跨页面访问的存储，但注意它还是会受到浏览器会话的限制  
+            if (!localStorage.getItem(`signed_${today}`) && !isSignedToday) {
+                coins++;
+                isSignedToday = true;
+                localStorage.setItem('coins', coins);
+                localStorage.setItem(`signed_${today}`, 'true');
+                alert(`签到成功！您现在有 ${coins} coin。`);
+            } else {
+                alert('您今天已经签到过了！');
+            }
+
+            // 更新页面显示的coins数量  
+            document.getElementById('coins').innerText = coins;
+        }
+
+        // 页面加载时从localStorage获取coins数量  
+        window.onload = function () {
+            const storedCoins = localStorage.getItem('coins');
+            if (storedCoins) {
+                coins = parseInt(storedCoins, 10);
+                document.getElementById('coins').innerText = coins;
+            }
+        };  
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>签到系统</title>
+    <script>
+        // 假设有一个全局变量来存储用户的coins和签到状态  
+        let isSignedToday = false;
+        coins = number(localStorage.getItem('coins'));
+
+        function signIn() {
+            const now = new Date();
+            const today = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+
+            // 这里使用localStorage来模拟跨页面访问的存储，但注意它还是会受到浏览器会话的限制  
+            if (!localStorage.getItem(`signed_${today}`) && !isSignedToday) {
+                coins++;
+                isSignedToday = true;
+                localStorage.setItem('coins', coins);
+                localStorage.setItem(`signed_${today}`, 'true');
+                alert(`签到成功！您现在有 ${userCoins} coin。`);
+            } else {
+                alert('您今天已经签到过了！');
+            }
+
+            // 更新页面显示的coins数量  
+            document.getElementById('coins').innerText = userCoins;
+        }
+
+        // 页面加载时从localStorage获取coins数量  
+        window.onload = function () {
+            const storedCoins = localStorage.getItem('coins');
+            if (storedCoins) {
+                userCoins = parseInt(storedCoins, 10);
+                document.getElementById('coins').innerText = userCoins;
+            }
+        };  
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul style="text-align: center; letter-spacing: 2px;">
+                <li><a href="../../index.html">首页</a></li>
+                <li class="is_login"><a href='post/login/login.html'>登录</a></li>
+                <li><a href="../others/others.html">其他</a></li>
+                <li class="is_my"></li>
+            </ul>
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+                    var username = localStorage.getItem("username");
+                    if (username) {
+                        document.querySelector(".is_login").innerHTML = "<a href='../login/login.html'>已登录</a>";
+                        document.querySelector(".is_my").innerHTML = "<a href='../mine/mine.html'>我的</a>";
+                    }
+                });
+            </script>
+        </nav>
+    </header>
+    <h1>签到系统</h1>
+    <p>您的Coin数量: <span id="coins">0</span></p>
+    <button onclick="signIn()">签到</button>
+</body>
+
+</html> -->

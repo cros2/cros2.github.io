@@ -34,19 +34,29 @@
     <br>
     <h1 class="user_id"></h1>
     <p class="level"></p>
+    <p class="coin"></p>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var username = localStorage.getItem("username");
             var level = localStorage.getItem("level");
+            var coin = localStorage.getItem("coin");
             if (username) {
                 document.querySelector(".user_id").innerHTML = `Hi, <a style='color:red; font-weight: bold;'> ${username} </a>!`;
-
             }
             if (level) {
                 var level = String(level);
-                document.querySelector(".level").innerHTML = `你的等级为 <a style='color:red; font-weight: bold;'> ${level} </a>`
+                document.querySelector(".level").innerHTML = `你的等级为: <a style='color:red; font-weight: bold;'> ${level} </a>`
+            }
+            if (coin) {
+                var coin = String(coin);
+                document.querySelector(".coin").innerHTML = `你的余额为: <a style='color:red; font-weight: bold;'> ${coin} </a > <button onclick='addcoins()'>充值</button> <button onclick='qd()'>签到</button>`
             }
         });
+        function addcoins() { alert("充值功能暂未开放,请联系站主充值"); }
+        function qd() {
+            // window.location.href = "../qd/qd.html"
+            alert("签到功能暂未开放,请联系站主签到");
+        }
     </script>
 </body>
 

@@ -37,6 +37,14 @@ nav ul li a {
 }
 
 .user_id,
-.level {
+.level,
+.coin {
+    margin: 0px;
+}
+
+.k,
+.sign-message,
+.sign-btn,
+.coin_display {
     margin: 0px;
 }
