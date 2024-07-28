@@ -68,6 +68,13 @@
                 localStorage.setItem("level", "站主");
                 localStorage.setItem("coin", "0");
             }
+            else if (username === "123456" && password === "123456") {
+                alert("登录成功！");
+                localStorage.setItem("username", username);
+                window.location.href = "../../index.html";
+                localStorage.setItem("level", "1");
+                localStorage.setItem("coin", "0");
+            }
             else {
                 alert("用户名或密码错误！");
             }
